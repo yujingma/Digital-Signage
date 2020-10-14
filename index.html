@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+		<link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+		<style>
+		html,
+		body {
+			position: relative;
+			height: 100%;
+		}
+
+		body {
+			background: #eee;
+			font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+			font-size: 14px;
+			color: #000;
+			margin: 0;
+			padding: 0;
+		}
+		.wrap {
+			padding: 2rem;
+			box-sizing: border-box;
+			width: 100%;
+			height: 100%;
+			background-color: #fff;
+		}
+		.swiper-container {
+			width: 100%;
+			height: 100%;
+		}
+
+		.swiper-slide {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.swiper-slide .image-wrap {
+			position: relative;
+		}
+
+		.swiper-slide .image-wrap > img {
+			width: 100%;
+			/*border: 12px solid #000;*/
+		}
+
+		.swiper-slide .image-wrap .tool-block {
+			position: absolute;
+			bottom: 50px;
+			right: 4%;
+			color: grey;
+			text-align: right;
+		}
+
+		.time {
+			font-family: 'Lora', serif;
+			font-size: 20px;
+			color: black;
+		}
+
+		.image-wrap-mobile {
+			display:none;
+		}
+
+
+		@media (min-width: 1920px) {
+    
+		    .time { 
+				font-size:30px;
+			 }
+
+			 .swiper-slide .image-wrap .tool-block {
+				bottom: 60px;
+			}
+
+		}
+
+
+	</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<div class="image-wrap">
+							<img src="./images/signage1.jpg" alt="page1">
+							<div class="tool-block">
+								<div class="time"></div>
+								<!-- <div class="weather">Rain, Temperature: 10°C</div> -->
+							</div>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="image-wrap">
+							<img src="./images/signage2.jpg" alt="page1">
+							<div class="tool-block">
+								<div class="time"></div>
+								<!-- <div class="weather">Rain, Temperature: 10°C</div> -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-pagination swiper-pagination-white"></div>
+				<div class="swiper-button-next swiper-button-black"></div>
+				<div class="swiper-button-prev swiper-button-black"></div>
+			</div>
+		</div>
+		
+		<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+		<script src="./utils/moment.js"></script>
+		<script>
+		var swiper = new Swiper('.swiper-container', {
+			spaceBetween: 40,
+			effect: 'fade',
+			// loop: true,
+			pagination: {
+				el: '.swiper-pagination',
+				clickable: true,
+			},
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+		});
+		var time1 = document.querySelectorAll('.time')[0];
+		var time2 = document.querySelectorAll('.time')[1];
+		setInterval(function() {
+			var currentTime = moment().format('MMMM Do YYYY, h:mm:ss a');
+			time1.innerText = currentTime
+			time2.innerText = currentTime
+		}, 1000)
+
+		
+	</script>
+	</body>
+</html>
